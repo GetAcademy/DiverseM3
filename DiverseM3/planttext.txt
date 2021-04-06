@@ -1,0 +1,32 @@
+﻿https://www.planttext.com/
+
+@startuml
+Player --> (Start nytt spill)
+Player --> (Gjøre et trekk)
+Player --> (Se gjennom et fullført parti)
+@enduml
+
+@startuml
+class Board
+class Piece
+class Square
+Piece <|-down- Bishop
+Piece <|-down- King
+Piece <|-down- Pawn
+Piece <|-down- Knight
+Piece <|-down- Queen
+Piece <|-down- Rook
+Board -up-*  Piece
+Board -up-*  Square
+Piece - Square
+@enduml
+
+
+@startuml
+actor User
+User -> GUI : MovePiece(from, to)
+GUI -> Board: piece = GetPiece(from)
+GUI -> Piece: isLegal = CheckLegal(to)
+GUI -> Piece: Move(to)
+GUI -> Board: Draw()
+@enduml
